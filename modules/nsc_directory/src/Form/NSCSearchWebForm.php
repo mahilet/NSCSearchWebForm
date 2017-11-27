@@ -64,14 +64,6 @@ class NSCSearchWebForm extends FormBase
         '#title' => t('Select your Colleges of choice.'),
         //"#default_value" => variable_get("collegeCode_options", "62"),
 
-        // '#options' => array(
-        //     '061' => t('District'),
-        //     '062' => t('Seattle Central'),
-        //     '063' => t('North Seattle'),
-        //     '064' => t('South Seattle'),
-        //     '065' => t('SVI'),
-        // ),
-
         '#options' => [
           '061' => $this->t('District'),
           '062' => $this->t('SeattleCentral'),
@@ -136,24 +128,25 @@ class NSCSearchWebForm extends FormBase
           switch ($college_code) {
 
             case '061':
-              $requestParams = array('CollegeCode' => '061'); //put in the code for District
+              $requestParams['CollegeCode'] =   $college_code;
+
               break;
 
              case '062':
-              $requestParams = array('CollegeCode' => '062');//put in the code for SeattleCentral
+                  $requestParams['CollegeCode'] =   $college_code;
               break;
 
 
              case '063':
-                $requestParams = array('CollegeCode' => '063'); //put in the code for NorthSeattle
+                  $requestParams['CollegeCode'] =   $college_code;
               break;
 
              case '064':
-                $requestParams = array('CollegeCode' => '064'); //put in the code for SourthSeattle
+                      $requestParams['CollegeCode'] =   $college_code;
               break;
 
              case '065':
-                $requestParams = array('CollegeCode' => '065'); //put in the code for SVI
+                  $requestParams['CollegeCode'] =   $college_code;
               break;
 
              default:
@@ -161,29 +154,6 @@ class NSCSearchWebForm extends FormBase
               break;
          }
        }
-
-
-
-      // if (!empty($collegeCode_options)) {
-      //     $requestParams = array('district' => '061');
-      // }
-      //
-      // if (!empty($collegeCode_options)) {
-      //        $requestParams = array('seattleCentral' => '062');
-      //
-      // }
-      // if (!empty($collegeCode_options)) {
-      //        $requestParams = array('NorthSeattle' => '063');
-      //
-      // }
-      // if (!empty($collegeCode_options)) {
-      //        $requestParams = array('SouthSeattle' => '064');
-      //
-      // }
-      // if (!empty($collegeCode_options)) {
-      //       $requestParams = array('SVI' => '065');
-      // }
-
 
         try {
             $client = new \SoapClient('http://seattlecolleges.edu/webservices/SCInformation.asmx?WSDL');
